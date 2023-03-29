@@ -27,9 +27,19 @@ const getChangepasswordPOSTSchema = () => ({
   newPassword: Joi.string().required().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W]).{8,}$/m),
   confirmPassword: Joi.string().required().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W]).{8,}$$/m),
 });
-const getGetuserbynameGETSchema = () => ({
-  username: Joi.string().email().required(),
+
+const getCreateuserPOSTSchema = () => ({
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required(),
+  email: Joi.string().email().required(),
+  Phonenumber: Joi.string().required(),
+  accountType: Joi.string().valid('I', 'C').required(),
+  status: Joi.string().valid('enabled', 'disabled').required(),
 });
+const getLogoutPOSTSchema = () => ({
+  userId: Joi.string().required(),
+});
+
 module.exports = {
   getLoginPOSTSchema,
   getSendotpPOSTSchema,
@@ -37,5 +47,6 @@ module.exports = {
   getForgotpasswordPOSTSchema,
   getResetpasswordPOSTSchema,
   getChangepasswordPOSTSchema,
-  getGetuserbynameGETSchema,
+  getCreateuserPOSTSchema,
+  getLogoutPOSTSchema,
 };

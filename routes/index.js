@@ -15,9 +15,9 @@ router.post('/resetpassword', validatePayload, (req, res, next) => personCore.re
 router.post('/changepassword', validatePayload, (req, res, next) => personCore.changepassword(req, res, next));
 
 router.use([checkAuth]);
-router.post('/createuser', (req, res, next) => personCore.createUser(req, res, next));
+router.post('/createuser', validatePayload, (req, res, next) => personCore.createUser(req, res, next));
 router.get('/getallusers', (req, res, next) => personCore.getallusers(req, res, next));
-router.post('/logout', (req, res, next) => personCore.logout(req, res, next));
+router.post('/logout', validatePayload, (req, res, next) => personCore.logout(req, res, next));
 router.put('/edituser', (req, res, next) => personCore.edituser(req, res, next));
 router.put('/editusertesting', (req, res, next) => personCore.editapitesting(req, res, next));
 router.get('/getuserbyname', (req, res, next) => personCore.getuserbyname(req, res, next));

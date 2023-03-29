@@ -1,5 +1,6 @@
 const helpers = require('../helpers/loginApi');
 const helper = require('../helpers/sendOtp');
+// eslint-disable-next-line import/extensions
 const generateNewAccessTokenn = require('../helpers/refreshToken.js');
 const verifyotp = require('../helpers/verifyOtp');
 const forgotpassword = require('../helpers/forgotPassword');

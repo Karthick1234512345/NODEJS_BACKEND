@@ -46,9 +46,8 @@ const generateToken = async (user) => {
 // eslint-disable-next-line consistent-return
 const verifyToken = async (accessToken, next) => {
   try {
-    // Check if token has been invalidated
     // eslint-disable-next-line max-len
-    const invalidatedToken = await model.invalidatedTokens.findOne({ where: { accessToken }, raw: true });
+    const invalidatedToken = await model.invalidatedTokens.findOne({ where: { accessToken } });
     if (invalidatedToken) {
       const err = new ErrorHandler('ERR_LOGGED_OUT');
       next(err);

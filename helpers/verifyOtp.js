@@ -36,11 +36,11 @@ const verifyOTP = async (req) => {
     }
     await model.users.update({ otpWrongAttempts: 0 }, { where: { id: user.id } });
     logger.info('OTP verification successful');
-    const { token, refreshToken } = await generateToken(user);
+    const { accessToken, refreshToken } = await generateToken(user);
 
     return {
       success: true,
-      token,
+      accessToken,
       refreshToken,
     };
   } catch (error) {
