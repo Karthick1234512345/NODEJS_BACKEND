@@ -11,7 +11,7 @@ const createuser = require('../helpers/createUser');
 const edituser = require('../helpers/editUser');
 const getallusers = require('../helpers/getAllUsers');
 const logout = require('../helpers/logout');
-const editApitesting = require('../helpers/editapitesting');
+const editApitesting = require('../helpers/edituserTest2');
 
 const personCore = {};
 

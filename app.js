@@ -31,6 +31,7 @@
 
 //   await sequelize.authenticate()
 //     .then(() => {
+// eslint-disable-next-line max-len
 //       server.listen(port, process.env.HOST, () => console.log(`Example app listening on port ${process.env.PORT} --${__filename}`));
 //     })
 //     .catch((err) => {
@@ -52,6 +53,7 @@ const { handleError } = require('./util/errorHandler/error');
 
 const app = express();
 const port = process.env.PORT || 7008;
+// eslint-disable-next-line no-unused-vars
 const jwt = require('jsonwebtoken');
 const indexroutes = require('./routes/index');
 
@@ -61,6 +63,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 // Add CORS middleware
+// eslint-disable-next-line consistent-return
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(

@@ -12,25 +12,20 @@ const editUsertesing = async (userId, userData) => {
     if (!existingUser) {
       throw new ErrorHandler('ERR_USER_NOT_FOUND');
     }
-
     const emailExists = await model.users.findOne({ where: { Email: userData.Email } });
     if (emailExists && emailExists.id !== userId) {
       throw new ErrorHandler('ERR_EMAIL_EXISTS');
     }
-
     let tempPassword;
     if (!emailExists && userData.Email) {
       tempPassword = commonFunctions.generateRandomPassword();
       const hashedPwd = await bcrypt.hash(tempPassword, appConstants.BCRYPT_SALT_ROUNDS);
-
       const expiryTime = new Date().setHours(new Date().getHours() + 24);
-
       const updateObj = {
         temproaryPassword: hashedPwd,
         temproaryPasswordExpiry: expiryTime,
         permanentPassword: null,
       };
-
       await model.users.update(updateObj, { where: { id: userId } });
 
       const emailData = {
